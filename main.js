@@ -1,3 +1,37 @@
+
+
+/* Background */
+let numOfShapes = 5;
+
+spawnShapes();
+function spawnShapes(){
+    let bg = document.querySelector('.background');
+    for(var i=0; i<numOfShapes; i++){
+        bg.innerHTML += `
+        <div class="shape"></div>
+    `;
+        
+
+
+        var ranNubTop = Math.floor(Math.random() * (screen.height - 200)); 
+        var ranNubLeft = Math.floor(Math.random() * (screen.width - 200)); 
+        bg.children[i].style.top = "" + ranNubTop + "px";
+        bg.children[i].style.left = "" + ranNubLeft + "px";
+
+
+    }
+    
+}
+
+/* Date and time*/
+const d = new Date();
+let date = document.querySelector('.date');
+
+date.innerHTML += '' + d.getDate() + '/' + (d.getMonth() + 1) + '/' + d.getUTCFullYear();
+
+
+
+/* Data Storing */
 var taskData = [];
 
 loadData();
@@ -45,20 +79,14 @@ function addTask(){
                 
                 var dataNum = this.parentNode.childNodes[0].nextSibling.innerHTML;
                 for(var a=0; a<storedData.length; a++){
-                    if( dataNum.indexOf(storedData[a]) != -1){  
-                        console.log(dataNum);
-                        console.log(storedData[a]);
-                        console.log("del");                
+                    if( dataNum.indexOf(storedData[a]) != -1){                  
                         storedData.splice(a, 1);
-                        
                         localStorage.setItem("task_data",JSON.stringify(taskData));
                     }     
                 }
                 for(var j=0; j<taskData.length; j++){
                     if( dataNum.indexOf(taskData[j]) != -1){  
-                        console.log(dataNum);
-                        console.log(taskData[j]);
-                        console.log("del");                
+                                      
                         taskData.splice(j, 1);
                         localStorage.setItem("task_data",JSON.stringify(taskData));
                     }     
@@ -89,12 +117,13 @@ function loadData(){
 
                 var dataNum = this.parentNode.childNodes[0].nextSibling.innerHTML;
                 for(var a=0; a<storedData.length; a++){
-                    if( dataNum.indexOf(storedData[a]) != -1){                  
+                    if( dataNum.indexOf(storedData[a]) != -1){               
                         storedData.splice(a, 1);
                         taskData.splice(a, 1);
-                        localStorage.setItem('task_data',JSON.stringify(taskData));
+                        localStorage.setItem('task_data',JSON.stringify(storedData));
                     }     
                 }
+
                 this.parentNode.remove();
             }
         }
