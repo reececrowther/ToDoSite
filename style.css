@@ -193,5 +193,6 @@ header{
     #to-do-container{
         min-width: 300px;
         width: 100%;
+        padding: 50px 10px;
     }
 }
