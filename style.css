@@ -188,3 +188,10 @@ header{
 .task button i {
     font-size: 1.6em;
 }
+
+@media only screen and (max-width: 401px){
+    #to-do-container{
+        min-width: 300px;
+        width: 100%;
+    }
+}
