@@ -3,7 +3,25 @@
 /* Background */
 let numOfShapes = 5;
 
-spawnShapes();
+if(screen.width > 500){
+    spawnShapes();
+}else{
+    mobilespawnShapes();
+}
+
+function mobilespawnShapes(){
+    let bg = document.querySelector('.background');
+    for(var i=0; i<2; i++){
+        bg.innerHTML += `
+        <div class="shape"></div>
+    `;
+}
+    bg.children[0].style.top =  "20%";
+    bg.children[0].style.left=  "-80px";
+    bg.children[1].style.right =  "-30px";
+    bg.children[1].style.bottom=  "20%";
+}
+
 function spawnShapes(){
     let bg = document.querySelector('.background');
     for(var i=0; i<numOfShapes; i++){
@@ -11,16 +29,13 @@ function spawnShapes(){
         <div class="shape"></div>
     `;
         
-
-
         var ranNubTop = Math.floor(Math.random() * (screen.height - 200)); 
         var ranNubLeft = Math.floor(Math.random() * (screen.width - 200)); 
         bg.children[i].style.top = "" + ranNubTop + "px";
         bg.children[i].style.left = "" + ranNubLeft + "px";
 
 
-    }
-    
+    } 
 }
 
 /* Date and time*/
